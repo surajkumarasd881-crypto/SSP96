@@ -177,154 +177,128 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#111113] text-[#e4e4e7] font-mono-code min-h-screen flex flex-col justify-between p-6 gap-6 selection:bg-[#5e5eff] selection:text-white relative overflow-x-hidden">
+    <div className="bg-[#F8F7F4] text-[#1A1A1A] font-sans min-h-screen flex flex-col p-8 md:p-12 selection:bg-[#B45F06] selection:text-[#F8F7F4]">
       
       {/* HEADER */}
-      <header className="flex justify-between items-center border border-[#e4e4e7]/10 px-8 py-5 bg-[#161619]/80 backdrop-blur-md rounded-xl z-50">
-        <div className="font-syne font-bold text-xl tracking-tight text-white flex items-center gap-3">
-          <span className="w-3 h-3 rounded-full bg-[#5e5eff] inline-block animate-pulse"></span>
-          SSP / ARCHIVE '26
+      <header className="border-b border-[#1A1A1A] pb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+        <div>
+          <div className="font-mono-space text-[0.65rem] tracking-[0.15em] opacity-70 uppercase mb-1">[00] IDENTITY</div>
+          {isEditingName ? (
+            <div className="flex items-center gap-2">
+              <input 
+                type="text" 
+                value={tempName} 
+                onChange={(e) => setTempName(e.target.value)}
+                className="font-serif-editorial text-2xl font-semibold bg-white border border-[#B45F06] px-2 py-0.5 rounded text-[#1A1A1A] focus:outline-none"
+              />
+              <button 
+                onClick={() => { setUserName(tempName); setIsEditingName(false); }}
+                className="px-3 py-1 bg-[#1A1A1A] text-white text-xs font-mono-space rounded"
+              >
+                Save
+              </button>
+            </div>
+          ) : (
+            <h2 
+              onClick={() => setIsEditingName(true)} 
+              className="font-serif-editorial font-semibold text-2xl sm:text-3xl m-0 cursor-pointer hover:text-[#B45F06] transition-colors"
+              title="Click to edit name"
+            >
+              {userName}
+            </h2>
+          )}
         </div>
-        <nav className="hidden md:flex gap-8 text-[0.655rem] uppercase tracking-[0.15em] text-[#e4e4e7]/60">
-          <a href="#about" className="hover:text-[#5e5eff] transition-colors">[01] PHILOSOPHY</a>
-          <a href="#projects" className="hover:text-[#5e5eff] transition-colors">[02] ARCHIVE</a>
-          <a href="#blogs" className="hover:text-[#5e5eff] transition-colors">[03] JOURNALS</a>
-          <a href="#contact" className="hover:text-[#5e5eff] transition-colors">[04] INQUIRY</a>
+
+        <nav className="flex gap-8">
+          <a href="#about" className="no-underline text-[#1A1A1A] text-[0.7rem] font-mono-space tracking-wider hover:text-[#B45F06] transition-colors">[01] PHILOSOPHY</a>
+          <a href="#projects" className="no-underline text-[#1A1A1A] text-[0.7rem] font-mono-space tracking-wider hover:text-[#B45F06] transition-colors">[02] ARCHIVE</a>
+          <a href="#blogs" className="no-underline text-[#1A1A1A] text-[0.7rem] font-mono-space tracking-wider hover:text-[#B45F06] transition-colors">[03] JOURNALS</a>
+          <a href="#contact" className="no-underline text-[#1A1A1A] text-[0.7rem] font-mono-space tracking-wider hover:text-[#B45F06] transition-colors">[04] INQUIRY</a>
         </nav>
-        <div className="flex items-center gap-3">
-          <a 
-            href="#contact" 
-            className="px-4 py-2 rounded-lg bg-[#5e5eff] text-white text-xs font-medium font-syne hover:bg-[#4a4ae6] transition-all shadow-md shadow-[#5e5eff]/20"
-          >
-            Execute Collaboration
-          </a>
-        </div>
+
+        <a 
+          href="#contact"
+          className="bg-[#1A1A1A] text-[#F8F7F4] border-none py-3 px-6 font-mono-space text-xs uppercase tracking-wider cursor-pointer hover:bg-[#B45F06] transition-all no-underline"
+        >
+          EXECUTE COLLABORATION
+        </a>
       </header>
 
-      {/* MAIN GRID */}
-      <main className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1">
-        
-        {/* HERO PANEL */}
-        <section id="about" className="lg:col-span-8 border border-[#e4e4e7]/10 p-8 sm:p-12 flex flex-col justify-between relative bg-gradient-to-br from-[#5e5eff]/5 via-transparent to-transparent rounded-2xl">
-          <div className="absolute top-6 left-6 text-[0.6rem] text-[#e4e4e7]/40 tracking-wider">
-            ID: SYSTEM_026_ALPHA // CHITRAKOOT TO PRAYAGRAJ
-          </div>
+      {/* MAIN HERO & SPECIALIZATION */}
+      <main className="grid grid-cols-1 lg:grid-cols-3 gap-12 py-16 flex-grow">
+        <section className="lg:col-span-2 hero space-y-6">
+          <span className="font-mono-space text-[0.65rem] tracking-[0.15em] opacity-70 uppercase block">MISSION // 2026</span>
+          <h1 className="font-serif-editorial text-6xl sm:text-8xl m-0 leading-[0.9] tracking-tight">
+            Technical precision meets storytelling.
+          </h1>
+          <p className="font-sans text-xl sm:text-2xl max-w-[42ch] leading-relaxed opacity-85">
+            I craft high-performance web applications, minimalist UIs, and immersive digital experiences from the foundation up in Chitrakoot & Prayagraj, India.
+          </p>
 
-          <div className="mt-12 space-y-6">
-            <span className="text-[0.65rem] tracking-[0.25em] text-[#5e5eff] uppercase font-bold block">
-              Mission Overview & Creator Profile
-            </span>
-            
-            <h1 className="font-syne text-4xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight text-white">
-              Technical precision meets storytelling.
-            </h1>
-
-            <p className="text-sm sm:text-base leading-relaxed text-[#e4e4e7]/70 max-w-2xl font-mono-code">
-              Hi, I'm <strong className="text-white">{userName}</strong>. A Web Developer and Creator based between Chitrakoot and Prayagraj, India, crafting high-performance web applications, minimalist UIs, and immersive digital experiences.
-            </p>
-          </div>
-
-          {/* Profile DP Card inside Hero */}
-          <div className="mt-12 pt-8 border-t border-[#e4e4e7]/10 flex flex-wrap items-center justify-between gap-6">
-            <div className="flex items-center gap-4">
-              <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-[#5e5eff]/30 group">
-                <img src={profileImage} alt={userName} className="w-full h-full object-cover" />
-                <label className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white cursor-pointer">
-                  <Camera size={16} />
-                  <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
-                </label>
-              </div>
-              <div>
-                <div className="font-syne font-bold text-white text-sm">{userName}</div>
-                <div className="text-xs text-[#5e5eff]">Creator & Developer</div>
-                <div className="text-[0.6rem] text-[#e4e4e7]/50 mt-0.5">Location: Chitrakoot to Prayagraj</div>
-              </div>
+          {/* Profile DP Card widget */}
+          <div className="pt-6 flex items-center gap-6">
+            <div className="relative w-16 h-16 rounded-full overflow-hidden border border-[#1A1A1A] group">
+              <img src={profileImage} alt={userName} className="w-full h-full object-cover" />
+              <label className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white cursor-pointer text-[0.6rem]">
+                <Camera size={16} />
+                <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
+              </label>
             </div>
-
-            <div className="flex items-center gap-3">
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-[#1a1a1e] border border-[#e4e4e7]/10 hover:border-[#5e5eff] text-[#e4e4e7] transition-all">
-                <Github size={16} />
-              </a>
-              <div className="flex items-center gap-2 bg-[#1a1a1e] border border-[#e4e4e7]/10 px-3 py-2 rounded-lg text-xs text-[#e4e4e7]">
-                <Instagram size={14} className="text-[#5e5eff]" />
-                {isEditingInstagram ? (
-                  <div className="flex items-center gap-1">
-                    <input 
-                      type="text" 
-                      value={tempInstagram} 
-                      onChange={(e) => setTempInstagram(e.target.value)}
-                      className="bg-black/40 text-xs px-2 py-0.5 rounded border border-[#5e5eff] text-white w-28 focus:outline-none"
-                    />
-                    <button 
-                      onClick={() => { setInstagramHandle(tempInstagram); setIsEditingInstagram(false); }}
-                      className="text-[#5e5eff] font-bold"
-                    >
-                      ✓
-                    </button>
-                  </div>
-                ) : (
-                  <span onClick={() => setIsEditingInstagram(true)} className="cursor-pointer hover:underline" title="Click to edit handle">
-                    {instagramHandle}
-                  </span>
-                )}
+            <div className="space-y-1">
+              <div className="font-mono-space text-xs font-bold">{userName}</div>
+              <div className="font-mono-space text-[0.65rem] text-[#B45F06]">Web Developer & Creator</div>
+              <div className="flex items-center gap-3 pt-1 text-xs">
+                <a href="https://github.com" target="_blank" rel="noreferrer" className="text-[#1A1A1A] hover:text-[#B45F06]"><Github size={16} /></a>
+                <div className="flex items-center gap-1 font-mono-space text-[0.7rem]">
+                  <Instagram size={14} className="text-[#B45F06]" />
+                  {isEditingInstagram ? (
+                    <div className="flex items-center gap-1">
+                      <input 
+                        type="text" 
+                        value={tempInstagram} 
+                        onChange={(e) => setTempInstagram(e.target.value)}
+                        className="bg-white text-xs px-2 py-0.5 rounded border border-[#1A1A1A] w-28 focus:outline-none"
+                      />
+                      <button onClick={() => { setInstagramHandle(tempInstagram); setIsEditingInstagram(false); }} className="text-[#B45F06] font-bold">✓</button>
+                    </div>
+                  ) : (
+                    <span onClick={() => setIsEditingInstagram(true)} className="cursor-pointer hover:underline">{instagramHandle}</span>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* CAPS PANEL (Capabilities / Skills) */}
-        <section className="lg:col-span-4 grid grid-rows-4 gap-4">
-          <div className="border border-[#e4e4e7]/10 p-5 rounded-xl bg-[#161619]/60 flex gap-4 items-start">
-            <span className="text-[0.65rem] text-[#5e5eff] font-bold">[01]</span>
-            <div>
-              <h3 className="text-xs uppercase font-bold text-white mb-1 font-syne">Web Design</h3>
-              <p className="text-[0.7rem] text-[#e4e4e7]/60 leading-normal">Modern, responsive and attractive website designs with a unique artistic touch.</p>
-            </div>
-          </div>
-
-          <div className="border border-[#e4e4e7]/10 p-5 rounded-xl bg-[#161619]/60 flex gap-4 items-start">
-            <span className="text-[0.65rem] text-[#5e5eff] font-bold">[02]</span>
-            <div>
-              <h3 className="text-xs uppercase font-bold text-white mb-1 font-syne">Frontend</h3>
-              <p className="text-[0.7rem] text-[#e4e4e7]/60 leading-normal">Interactive websites with smooth animations and custom micro-interactions.</p>
-            </div>
-          </div>
-
-          <div className="border border-[#e4e4e7]/10 p-5 rounded-xl bg-[#161619]/60 flex gap-4 items-start">
-            <span className="text-[0.65rem] text-[#5e5eff] font-bold">[03]</span>
-            <div>
-              <h3 className="text-xs uppercase font-bold text-white mb-1 font-syne">Development</h3>
-              <p className="text-[0.7rem] text-[#e4e4e7]/60 leading-normal">Complete full-stack websites for personal brands, creators and small businesses.</p>
-            </div>
-          </div>
-
-          <div className="border border-[#e4e4e7]/10 p-5 rounded-xl bg-[#161619]/60 flex gap-4 items-start">
-            <span className="text-[0.65rem] text-[#5e5eff] font-bold">[04]</span>
-            <div>
-              <h3 className="text-xs uppercase font-bold text-white mb-1 font-syne">Skill Set</h3>
-              <p className="text-[0.7rem] text-[#e4e4e7]/60 leading-normal">HTML, CSS, JS, React, Tailwind, TypeScript, APIs, and AI Integrations.</p>
-            </div>
+        <section>
+          <div className="border border-[#1A1A1A] p-8 bg-white/50 backdrop-blur-sm">
+            <span className="font-mono-space text-[0.65rem] tracking-[0.15em] opacity-70 uppercase block">SPECIALIZATION</span>
+            <ul className="list-none p-0 font-mono-space text-[0.8rem] mt-8 space-y-0">
+              <li className="border-t border-[#1A1A1A] py-4 flex justify-between items-center">[01] WEB DESIGN <span className="text-[#B45F06]">→</span></li>
+              <li className="border-t border-[#1A1A1A] py-4 flex justify-between items-center">[02] FRONTEND <span className="text-[#B45F06]">→</span></li>
+              <li className="border-t border-[#1A1A1A] py-4 flex justify-between items-center">[03] DEVELOPMENT <span className="text-[#B45F06]">→</span></li>
+              <li className="border-t border-b border-[#1A1A1A] py-4 flex justify-between items-center">[04] AI INTEGRATION <span className="text-[#B45F06]">→</span></li>
+            </ul>
           </div>
         </section>
-
       </main>
 
-      {/* PROJECTS ARCHIVE SECTION */}
-      <section id="projects" className="border border-[#e4e4e7]/10 p-8 rounded-2xl bg-[#161619]/40">
+      {/* FEATURED ARCHIVE (PROJECTS) */}
+      <section id="projects" className="py-16 border-t border-[#1A1A1A]/20">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <div>
-            <div className="text-[0.65rem] tracking-[0.2em] text-[#5e5eff] uppercase font-bold">Featured Works</div>
-            <h2 className="font-syne text-2xl sm:text-3xl text-white mt-1">Project Archive</h2>
+            <span className="font-mono-space text-[0.65rem] tracking-[0.15em] opacity-70 uppercase block mb-1">FEATURED ARCHIVE</span>
+            <h2 className="font-serif-editorial text-4xl sm:text-5xl m-0">Selected Projects</h2>
           </div>
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setProjectFilter(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono-code transition-all ${
+                className={`px-3 py-1.5 font-mono-space text-xs uppercase cursor-pointer border ${
                   projectFilter === cat 
-                    ? 'bg-[#5e5eff] text-white font-bold' 
-                    : 'bg-[#1a1a1e] border border-[#e4e4e7]/10 text-[#e4e4e7]/70 hover:text-white'
+                    ? 'bg-[#1A1A1A] text-[#F8F7F4] border-[#1A1A1A]' 
+                    : 'bg-transparent text-[#1A1A1A] border-[#1A1A1A]/30 hover:border-[#1A1A1A]'
                 }`}
               >
                 {cat}
@@ -333,192 +307,177 @@ export default function App() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredProjects.map((project) => (
             <div 
               key={project.id}
               onClick={() => setSelectedProject(project)}
-              className="border border-[#e4e4e7]/10 rounded-xl overflow-hidden bg-[#1a1a1e]/80 hover:border-[#5e5eff] transition-all cursor-pointer group flex flex-col justify-between"
+              className="border border-[#1A1A1A] p-6 bg-white/60 hover:bg-white transition-all cursor-pointer group flex flex-col justify-between"
             >
-              <div className="h-48 overflow-hidden relative">
+              <div className="h-56 overflow-hidden mb-6 border border-[#1A1A1A]/20">
                 <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-[0.6rem] text-white font-mono-code">
-                  {project.category}
-                </span>
               </div>
-              <div className="p-5 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-syne font-bold text-base text-white mb-2 group-hover:text-[#5e5eff] transition-colors">{project.title}</h3>
-                  <p className="text-xs text-[#e4e4e7]/60 line-clamp-2 leading-relaxed mb-4">{project.description}</p>
-                </div>
-                <div className="flex items-center justify-between pt-4 border-t border-[#e4e4e7]/10 text-xs text-[#5e5eff]">
-                  <span className="flex items-center gap-1 font-semibold">Inspect Spec <ArrowRight size={14} /></span>
-                </div>
+              <div>
+                <span className="font-mono-space text-[0.65rem] text-[#B45F06] uppercase tracking-wider block mb-2">{project.category}</span>
+                <h3 className="font-serif-editorial text-2xl font-semibold m-0 mb-3 group-hover:text-[#B45F06] transition-colors">{project.title}</h3>
+                <p className="text-sm opacity-80 leading-relaxed mb-4">{project.description}</p>
+                <div className="font-mono-space text-xs text-[#B45F06] flex items-center gap-1 font-bold">INSPECT SPECIFICATION →</div>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* JOURNALS & BLOGS */}
-      <section id="blogs" className="border border-[#e4e4e7]/10 p-8 rounded-2xl bg-[#161619]/45">
+      {/* JOURNALS SECTION */}
+      <section id="blogs" className="py-16 border-t border-[#1A1A1A]/20">
         <div className="flex justify-between items-center mb-8">
           <div>
-            <div className="text-[0.65rem] tracking-[0.2em] text-[#5e5eff] uppercase font-bold">Engineering Notes</div>
-            <h2 className="font-syne text-2xl sm:text-3xl text-white mt-1">Journals & Articles</h2>
+            <span className="font-mono-space text-[0.65rem] tracking-[0.15em] opacity-70 uppercase block mb-1">EDITORIAL JOURNALS</span>
+            <h2 className="font-serif-editorial text-4xl sm:text-5xl m-0">Thoughts & Articles</h2>
           </div>
           <button 
             onClick={() => setNewBlogModal(true)}
-            className="px-4 py-2 rounded-lg bg-[#1a1a1e] border border-[#5e5eff]/40 text-[#5e5eff] text-xs font-bold hover:bg-[#5e5eff] hover:text-white transition-all flex items-center gap-2 font-syne"
+            className="bg-transparent border border-[#1A1A1A] py-2 px-4 font-mono-space text-xs uppercase cursor-pointer hover:bg-[#1A1A1A] hover:text-[#F8F7F4] transition-all flex items-center gap-2"
           >
-            <Plus size={14} /> New Journal Entry
+            <Plus size={14} /> New Article
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {blogs.map((blog) => (
             <div 
               key={blog.id} 
               onClick={() => setSelectedBlog(blog)}
-              className="border border-[#e4e4e7]/10 p-6 rounded-xl bg-[#1a1a1e]/70 hover:border-[#5e5eff] transition-all cursor-pointer group flex flex-col justify-between"
+              className="border border-[#1A1A1A] p-6 bg-white/60 hover:bg-white transition-all cursor-pointer group flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between text-xs text-[#e4e4e7]/50 mb-3">
-                  <span className="text-[#5e5eff] font-bold">{blog.category}</span>
+                <div className="flex justify-between font-mono-space text-[0.65rem] opacity-70 uppercase mb-3">
+                  <span className="text-[#B45F06] font-bold">{blog.category}</span>
                   <span>{blog.date} · {blog.readTime}</span>
                 </div>
-                <h3 className="font-syne font-bold text-lg text-white mb-2 group-hover:text-[#5e5eff] transition-colors">{blog.title}</h3>
-                <p className="text-xs text-[#e4e4e7]/70 leading-relaxed mb-4">{blog.excerpt}</p>
+                <h3 className="font-serif-editorial text-2xl font-semibold m-0 mb-3 group-hover:text-[#B45F06] transition-colors">{blog.title}</h3>
+                <p className="text-sm opacity-80 leading-relaxed mb-4">{blog.excerpt}</p>
               </div>
-              <div className="text-xs text-[#5e5eff] font-semibold flex items-center gap-1">Read Full Article <ArrowRight size={14} /></div>
+              <div className="font-mono-space text-xs text-[#B45F06] font-bold">READ ARTICLE →</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* CONTACT / INQUIRY SECTION */}
-      <section id="contact" className="border border-[#e4e4e7]/10 p-8 sm:p-12 rounded-2xl bg-[#161619]/60">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-10">
-            <span className="text-[0.65rem] tracking-[0.2em] text-[#5e5eff] uppercase font-bold">Secure Transmission</span>
-            <h2 className="font-syne text-3xl sm:text-4xl text-white mt-2">Initialize Collaboration</h2>
-            <p className="text-xs text-[#e4e4e7]/60 mt-2">Send a direct message or inquiry. Let's build something exceptional together.</p>
-          </div>
-
-          {contactSubmitted ? (
-            <div className="border border-green-500/30 bg-green-500/10 p-8 rounded-xl text-center space-y-3">
-              <CheckCircle2 className="mx-auto text-green-400" size={36} />
-              <h3 className="font-syne font-bold text-lg text-white">Transmission Successful</h3>
-              <p className="text-xs text-[#e4e4e7]/70">Thank you for your message. Suraj will get back to you shortly.</p>
-            </div>
-          ) : (
-            <form onSubmit={handleContactSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs uppercase text-[#e4e4e7]/70 mb-1 font-syne">Your Name</label>
-                  <input 
-                    type="text" 
-                    required
-                    value={contactForm.name} 
-                    onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                    placeholder="John Doe" 
-                    className="w-full bg-[#1a1a1e] border border-[#e4e4e7]/15 rounded-lg px-4 py-3 text-sm text-white focus:border-[#5e5eff] focus:outline-none"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs uppercase text-[#e4e4e7]/70 mb-1 font-syne">Email Address</label>
-                  <input 
-                    type="email" 
-                    required
-                    value={contactForm.email} 
-                    onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                    placeholder="john@example.com" 
-                    className="w-full bg-[#1a1a1e] border border-[#e4e4e7]/15 rounded-lg px-4 py-3 text-sm text-white focus:border-[#5e5eff] focus:outline-none"
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-xs uppercase text-[#e4e4e7]/70 mb-1 font-syne">Project Scope</label>
-                <select 
-                  value={contactForm.project}
-                  onChange={(e) => setContactForm({ ...contactForm, project: e.target.value })}
-                  className="w-full bg-[#1a1a1e] border border-[#e4e4e7]/15 rounded-lg px-4 py-3 text-sm text-white focus:border-[#5e5eff] focus:outline-none"
-                >
-                  <option>Web Development</option>
-                  <option>Web Design</option>
-                  <option>AI Integration</option>
-                  <option>Full-Stack Application</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-xs uppercase text-[#e4e4e7]/70 mb-1 font-syne">Message</label>
-                <textarea 
-                  rows={4}
-                  required
-                  value={contactForm.message}
-                  onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                  placeholder="Describe your project requirements..."
-                  className="w-full bg-[#1a1a1e] border border-[#e4e4e7]/15 rounded-lg px-4 py-3 text-sm text-white focus:border-[#5e5eff] focus:outline-none resize-none"
-                ></textarea>
-              </div>
-              <button 
-                type="submit"
-                className="w-full py-4 rounded-lg bg-[#5e5eff] text-white font-syne font-bold hover:bg-[#4a4ae6] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#5e5eff]/30"
-              >
-                Transmit Message <Send size={16} />
-              </button>
-            </form>
-          )}
+      <section id="contact" className="py-16 border-t border-[#1A1A1A]/20 max-w-2xl mx-auto w-full">
+        <div className="text-center mb-10">
+          <span className="font-mono-space text-[0.65rem] tracking-[0.15em] opacity-70 uppercase block mb-1">TRANSMISSION</span>
+          <h2 className="font-serif-editorial text-4xl sm:text-5xl m-0">Initialize Collaboration</h2>
         </div>
+
+        {contactSubmitted ? (
+          <div className="border border-[#1A1A1A] bg-white p-8 text-center space-y-3">
+            <CheckCircle2 className="mx-auto text-[#B45F06]" size={36} />
+            <h3 className="font-serif-editorial text-2xl font-semibold">Transmission Successful</h3>
+            <p className="font-mono-space text-xs opacity-80">Thank you. Suraj will review your inquiry shortly.</p>
+          </div>
+        ) : (
+          <form onSubmit={handleContactSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label className="block font-mono-space text-xs uppercase mb-2">Your Name</label>
+                <input 
+                  type="text" 
+                  required
+                  value={contactForm.name} 
+                  onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                  placeholder="John Doe" 
+                  className="w-full bg-white border border-[#1A1A1A] p-3 font-sans text-sm focus:outline-none focus:border-[#B45F06]"
+                />
+              </div>
+              <div>
+                <label className="block font-mono-space text-xs uppercase mb-2">Email Address</label>
+                <input 
+                  type="email" 
+                  required
+                  value={contactForm.email} 
+                  onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                  placeholder="john@example.com" 
+                  className="w-full bg-white border border-[#1A1A1A] p-3 font-sans text-sm focus:outline-none focus:border-[#B45F06]"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block font-mono-space text-xs uppercase mb-2">Project Scope</label>
+              <select 
+                value={contactForm.project}
+                onChange={(e) => setContactForm({ ...contactForm, project: e.target.value })}
+                className="w-full bg-white border border-[#1A1A1A] p-3 font-sans text-sm focus:outline-none focus:border-[#B45F06]"
+              >
+                <option>Web Development</option>
+                <option>Web Design</option>
+                <option>AI Integration</option>
+                <option>Full-Stack Application</option>
+              </select>
+            </div>
+            <div>
+              <label className="block font-mono-space text-xs uppercase mb-2">Message</label>
+              <textarea 
+                rows={4}
+                required
+                value={contactForm.message}
+                onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                placeholder="Describe your project requirements..."
+                className="w-full bg-white border border-[#1A1A1A] p-3 font-sans text-sm focus:outline-none focus:border-[#B45F06] resize-none"
+              ></textarea>
+            </div>
+            <button 
+              type="submit"
+              className="w-full bg-[#1A1A1A] text-[#F8F7F4] border-none py-4 font-mono-space text-xs uppercase tracking-wider cursor-pointer hover:bg-[#B45F06] transition-all"
+            >
+              Send Transmission
+            </button>
+          </form>
+        )}
       </section>
 
       {/* FOOTER */}
-      <footer className="border border-[#e4e4e7]/10 px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4 bg-[#161619]/80 rounded-xl text-[0.65rem] text-[#e4e4e7]/60">
-        <div>
-          PRAYAGRAJ, IN / <span className="text-white">ASMEDIA.COLLAB@GMAIL.COM</span>
-        </div>
-        <a href="#contact" className="font-syne text-sm text-white px-6 py-2 border border-[#5e5eff] rounded-lg hover:bg-[#5e5eff] transition-all">
-          Execute Collaboration
-        </a>
-        <div>
-          {userName} — © 2026 / <span className="text-white">ALL_RIGHTS_RESERVED</span>
-        </div>
+      <footer className="mt-auto border-t border-[#1A1A1A] pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+        <span className="font-mono-space text-[0.65rem] opacity-75 uppercase">PRAYAGRAJ, INDIA</span>
+        <span className="font-mono-space text-[0.65rem] opacity-75 uppercase">© 2026 {userName.toUpperCase()} — ALL RIGHTS RESERVED</span>
+        <span className="font-mono-space text-[0.65rem] opacity-75 uppercase">ASMEDIA.COLLAB@GMAIL.COM</span>
       </footer>
 
       {/* PROJECT INSPECT MODAL */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-[#161619] border border-[#e4e4e7]/20 rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative space-y-6">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-[#F8F7F4] border border-[#1A1A1A] max-w-2xl w-full p-8 relative space-y-6">
             <button 
               onClick={() => setSelectedProject(null)}
-              className="absolute top-5 right-5 p-2 rounded-lg bg-[#1a1a1e] text-[#e4e4e7] hover:text-white"
+              className="absolute top-6 right-6 p-2 bg-transparent border border-[#1A1A1A] cursor-pointer hover:bg-[#1A1A1A] hover:text-white"
             >
               <X size={20} />
             </button>
-            <div className="h-64 rounded-xl overflow-hidden border border-[#e4e4e7]/10">
+            <div className="h-64 overflow-hidden border border-[#1A1A1A]">
               <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-cover" />
             </div>
             <div>
-              <span className="text-[0.65rem] text-[#5e5eff] font-bold uppercase">{selectedProject.category}</span>
-              <h2 className="font-syne text-2xl text-white mt-1">{selectedProject.title}</h2>
-              <p className="text-xs text-[#e4e4e7]/70 mt-3 leading-relaxed">{selectedProject.description}</p>
+              <span className="font-mono-space text-[0.65rem] text-[#B45F06] uppercase tracking-wider">{selectedProject.category}</span>
+              <h2 className="font-serif-editorial text-3xl font-semibold m-0 mt-1">{selectedProject.title}</h2>
+              <p className="text-sm opacity-80 mt-3 leading-relaxed">{selectedProject.description}</p>
             </div>
             <div>
-              <div className="text-xs uppercase text-[#e4e4e7]/50 mb-2 font-syne">Tech Stack</div>
+              <div className="font-mono-space text-xs uppercase mb-2 opacity-70">Tech Stack</div>
               <div className="flex flex-wrap gap-2">
                 {selectedProject.techStack.map((tech) => (
-                  <span key={tech} className="px-3 py-1 rounded-md bg-[#1a1a1e] border border-[#e4e4e7]/10 text-xs text-white">
+                  <span key={tech} className="px-3 py-1 border border-[#1A1A1A] font-mono-space text-xs bg-white">
                     {tech}
                   </span>
                 ))}
               </div>
             </div>
-            <div className="flex gap-3 pt-4 border-t border-[#e4e4e7]/10">
-              <a href={selectedProject.liveUrl} target="_blank" rel="noreferrer" className="flex-1 py-3 rounded-lg bg-[#5e5eff] text-white text-center font-syne text-xs font-bold hover:bg-[#4a4ae6] transition-all flex items-center justify-center gap-2">
-                Live Preview <ExternalLink size={14} />
+            <div className="flex gap-4 pt-4 border-t border-[#1A1A1A]">
+              <a href={selectedProject.liveUrl} target="_blank" rel="noreferrer" className="flex-1 py-3 bg-[#1A1A1A] text-[#F8F7F4] font-mono-space text-xs uppercase text-center no-underline hover:bg-[#B45F06]">
+                Live Preview ↗
               </a>
-              <a href={selectedProject.githubUrl} target="_blank" rel="noreferrer" className="px-6 py-3 rounded-lg bg-[#1a1a1e] border border-[#e4e4e7]/10 text-white text-center font-syne text-xs font-bold hover:bg-[#222227] transition-all flex items-center justify-center gap-2">
-                <Github size={14} /> Source
+              <a href={selectedProject.githubUrl} target="_blank" rel="noreferrer" className="px-6 py-3 border border-[#1A1A1A] font-mono-space text-xs uppercase text-center no-underline hover:bg-[#1A1A1A] hover:text-white">
+                GitHub
               </a>
             </div>
           </div>
@@ -527,30 +486,30 @@ export default function App() {
 
       {/* BLOG READ MODAL */}
       {selectedBlog && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-[#161619] border border-[#e4e4e7]/20 rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative space-y-6 max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-[#F8F7F4] border border-[#1A1A1A] max-w-2xl w-full p-8 relative space-y-6 max-h-[90vh] overflow-y-auto">
             <button 
               onClick={() => setSelectedBlog(null)}
-              className="absolute top-5 right-5 p-2 rounded-lg bg-[#1a1a1e] text-[#e4e4e7] hover:text-white"
+              className="absolute top-6 right-6 p-2 bg-transparent border border-[#1A1A1A] cursor-pointer hover:bg-[#1A1A1A] hover:text-white"
             >
               <X size={20} />
             </button>
             <div>
-              <div className="flex items-center justify-between text-xs text-[#e4e4e7]/50 mb-2">
-                <span className="text-[#5e5eff] font-bold">{selectedBlog.category}</span>
+              <div className="flex justify-between font-mono-space text-[0.65rem] opacity-70 uppercase mb-2">
+                <span className="text-[#B45F06] font-bold">{selectedBlog.category}</span>
                 <span>{selectedBlog.date} · {selectedBlog.readTime}</span>
               </div>
-              <h1 className="font-syne text-2xl sm:text-3xl text-white">{selectedBlog.title}</h1>
-              <div className="text-xs text-[#e4e4e7]/50 mt-1">By {selectedBlog.author}</div>
+              <h1 className="font-serif-editorial text-3xl font-semibold m-0">{selectedBlog.title}</h1>
+              <div className="font-mono-space text-xs opacity-70 mt-1">By {selectedBlog.author}</div>
             </div>
-            <div className="text-sm text-[#e4e4e7]/80 leading-relaxed whitespace-pre-line border-t border-b border-[#e4e4e7]/10 py-6 font-mono-code">
+            <div className="text-sm leading-relaxed whitespace-pre-line border-t border-b border-[#1A1A1A]/20 py-6 font-sans opacity-90">
               {selectedBlog.content}
             </div>
             <button 
               onClick={() => setSelectedBlog(null)}
-              className="w-full py-3 rounded-lg bg-[#1a1a1e] border border-[#e4e4e7]/10 text-white font-syne text-xs font-bold hover:bg-[#222227] transition-all"
+              className="w-full py-3 border border-[#1A1A1A] bg-transparent font-mono-space text-xs uppercase cursor-pointer hover:bg-[#1A1A1A] hover:text-white"
             >
-              Close Journal
+              Close Article
             </button>
           </div>
         </div>
@@ -558,65 +517,65 @@ export default function App() {
 
       {/* NEW BLOG MODAL */}
       {newBlogModal && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-[#161619] border border-[#e4e4e7]/20 rounded-2xl max-w-xl w-full p-6 sm:p-8 relative space-y-4">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-[#F8F7F4] border border-[#1A1A1A] max-w-xl w-full p-8 relative space-y-4">
             <button 
               onClick={() => setNewBlogModal(false)}
-              className="absolute top-5 right-5 p-2 rounded-lg bg-[#1a1a1e] text-[#e4e4e7] hover:text-white"
+              className="absolute top-6 right-6 p-2 bg-transparent border border-[#1A1A1A] cursor-pointer hover:bg-[#1A1A1A] hover:text-white"
             >
               <X size={20} />
             </button>
-            <h2 className="font-syne text-xl text-white">Create New Journal Entry</h2>
+            <h2 className="font-serif-editorial text-2xl font-semibold m-0">Publish New Article</h2>
             <form onSubmit={handleAddBlog} className="space-y-4">
               <div>
-                <label className="block text-xs uppercase text-[#e4e4e7]/70 mb-1 font-syne">Title</label>
+                <label className="block font-mono-space text-xs uppercase mb-1">Title</label>
                 <input 
                   type="text" 
                   required
                   value={newTitle} 
                   onChange={(e) => setNewTitle(e.target.value)}
-                  placeholder="Journal Title..." 
-                  className="w-full bg-[#1a1a1e] border border-[#e4e4e7]/15 rounded-lg px-4 py-2.5 text-sm text-white focus:border-[#5e5eff] focus:outline-none"
+                  placeholder="Article Title..." 
+                  className="w-full bg-white border border-[#1A1A1A] p-2.5 font-sans text-sm focus:outline-none focus:border-[#B45F06]"
                 />
               </div>
               <div>
-                <label className="block text-xs uppercase text-[#e4e4e7]/70 mb-1 font-syne">Category</label>
+                <label className="block font-mono-space text-xs uppercase mb-1">Category</label>
                 <input 
                   type="text" 
                   required
                   value={newCategory} 
                   onChange={(e) => setNewCategory(e.target.value)}
                   placeholder="Web Development" 
-                  className="w-full bg-[#1a1a1e] border border-[#e4e4e7]/15 rounded-lg px-4 py-2.5 text-sm text-white focus:border-[#5e5eff] focus:outline-none"
+                  className="w-full bg-white border border-[#1A1A1A] p-2.5 font-sans text-sm focus:outline-none focus:border-[#B45F06]"
                 />
               </div>
               <div>
-                <label className="block text-xs uppercase text-[#e4e4e7]/70 mb-1 font-syne">Excerpt</label>
+                <label className="block font-mono-space text-xs uppercase mb-1">Excerpt</label>
                 <input 
                   type="text" 
                   required
                   value={newExcerpt} 
                   onChange={(e) => setNewExcerpt(e.target.value)}
                   placeholder="Short summary..." 
-                  className="w-full bg-[#1a1a1e] border border-[#e4e4e7]/15 rounded-lg px-4 py-2.5 text-sm text-white focus:border-[#5e5eff] focus:outline-none"
+                  className="w-full bg-white border border-[#1A1A1A] p-2.5 font-sans text-sm focus:outline-none focus:border-[#B45F06]"
                 />
               </div>
               <div>
-                <label className="block text-xs uppercase text-[#e4e4e7]/70 mb-1 font-syne">Content</label>
+                <label className="block font-mono-space text-xs uppercase mb-1">Content</label>
                 <textarea 
                   rows={4}
                   required
                   value={newContent}
                   onChange={(e) => setNewContent(e.target.value)}
-                  placeholder="Full article content..."
-                  className="w-full bg-[#1a1a1e] border border-[#e4e4e7]/15 rounded-lg px-4 py-2.5 text-sm text-white focus:border-[#5e5eff] focus:outline-none resize-none"
+                  placeholder="Full article body..."
+                  className="w-full bg-white border border-[#1A1A1A] p-2.5 font-sans text-sm focus:outline-none focus:border-[#B45F06] resize-none"
                 ></textarea>
               </div>
               <button 
                 type="submit"
-                className="w-full py-3 rounded-lg bg-[#5e5eff] text-white font-syne text-xs font-bold hover:bg-[#4a4ae6] transition-all"
+                className="w-full py-3 bg-[#1A1A1A] text-[#F8F7F4] font-mono-space text-xs uppercase cursor-pointer hover:bg-[#B45F06]"
               >
-                Publish Journal Entry
+                Publish
               </button>
             </form>
           </div>
